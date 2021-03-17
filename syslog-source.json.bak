@@ -1,0 +1,16 @@
+{
+        "name": "syslog",
+        "config": {
+                "connector.class": "io.confluent.connect.syslog.SyslogSourceConnector",
+                "confluent.topic.bootstrap.servers": "node1:9092, node2:9092, node3:9092",
+                "key.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
+                "key.converter.schema.registry.url": "http://node1:8081",
+                "value.converter": "org.apache.kafka.connect.storage.StringConverter",
+                "value.converter.schema.registry.url": "http://node1:8081",
+                "syslog.port": "5140",
+                "syslog.listener": "TCP",
+                "schema.registry.url": "http://node1",
+                "topic": "syslog"
+                
+        }
+}

@@ -1,0 +1,47 @@
+CREATE STREAM irclines (channel VARCHAR, message VARCHAR)
+    WITH (KAFKA_TOPIC='irc', VALUE_FORMAT='AVRO');
+
+CREATE STREAM irc_count AS 
+      SELECT messages AS field1,  
+                     1 AS sum_this 
+      FROM irclines;
+
+
+
+CREATE TABLE IRC_SUMMARY AS
+    SELECT channel,
+           COUNT(message) AS CHANNEL_COUNT
+    FROM irclines
+    WINDOW TUMBLING (SIZE 1 MINUTE)
+    GROUP BY channel
+    EMIT CHANGES;
+
+
+
+
+CREATE STREAM msgcount (message VARCHAR)
+  WITH (KAFKA_TOPIC ='irc',
+        VALUE_FORMAT='AVRO');
+
+
+SELECT 'X' AS X,
+       COUNT(*) AS MSG_CT
+  FROM msgcount
+  GROUP BY 'X'
+  EMIT CHANGES LIMIT 1;
+
+
+CREATE TABLE IRC_COUNT2 AS
+    SELECT 'message' AS X,
+           COUNT(*) AS MSG_COUNT
+    FROM msgcount
+    WINDOW TUMBLING (SIZE 1 MINUTE)
+    EMIT CHANGES;o
+
+SELECT TIMESTAMPTOSTRING(WINDOWSTART,'yyyy-MM-dd HH:mm:ss','Europe/London')
+         AS FOUR_HOUR_WINDOW_START_TS,
+       COUNT(*) AS RECORD_CT
+  FROM msgcount
+        WINDOW TUMBLING (SIZE 1 MINUTE)
+  GROUP BY 1
+  EMIT CHANGES;

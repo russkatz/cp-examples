@@ -1,0 +1,21 @@
+{
+        "name": "topic01-three-to-node",
+	"config": {
+		"connector.class": "io.confluent.connect.replicator.ReplicatorSourceConnector",
+		"topic.whitelist": "topic01",
+		"key.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
+		"value.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
+		"topic.rename.format": "${topic}",
+		"dest.kafka.bootstrap.servers": "node1:9092",
+		"dest.kafka.replication.factor": 3,
+		"src.kafka.bootstrap.servers": "three1:9092",
+		"src.consumer.interceptor.classes": "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor",
+		"src.consumer.confluent.monitoring.interceptor.bootstrap.servers": "three1:9092",
+		"src.consumer.group.id": "from-three",
+		"src.kafka.timestamps.producer.interceptor.classes": "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor",
+		"src.kafka.timestamps.producer.confluent.monitoring.interceptor.bootstrap.servers": "three1:9092",
+		"offset.timestamps.commit": "true",
+                "provenance.header.enable": "true",
+		"tasks.max": "3"
+	}
+}

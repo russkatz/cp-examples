@@ -1,0 +1,10 @@
+killall -9 java
+rm -rf /opt/cp/logs/zk*/version-2/
+rm -rf /opt/cp/logs/remotezk*/zk/version-2/
+rm -rf /opt/cp/logs/threezk*/zk/version-2/
+rm -rf /opt/cp/logs/node*/*
+rm -rf /opt/cp/logs/remote*/*
+rm -rf /opt/cp/logs/three*/*
+rm -rf /tmp/confluent/control-center
+rm -rf /tmp/confluent/control-center-remote
+rm -rf /tmp/confluent/control-center-three

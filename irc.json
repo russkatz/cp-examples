@@ -1,0 +1,16 @@
+{
+        "name": "irc-undernet",
+        "config": {
+                "connector.class": "com.github.cjmatta.kafka.connect.irc.IrcSourceConnector",
+                "confluent.topic.bootstrap.servers": "node1:9092, node2:9092, node3:9092",
+                "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+                "value.converter": "io.confluent.connect.avro.AvroConverter",
+                "value.converter.schema.registry.url": "http://node1:8081",
+                "irc.server": "irc.colosolutions.net",
+                "irc.server.port": "6669",
+                "irc.channels": "#help,#pcgames,#politics,#irc30",
+                "irc.bot.name": "ConnectMe",
+                "kafka.topic": "irc"
+                
+        }
+}

@@ -1,0 +1,13 @@
+{
+        "name": "jdbc_sink_mysql_foobarsink_01",
+        "config": {
+                "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+                "key.converter": "io.confluent.connect.avro.AvroConverter",
+                "key.converter.schema.registry.url": "http://node1:8081",
+                "value.converter": "io.confluent.connect.avro.AvroConverter",
+                "value.converter.schema.registry.url": "http://node1:8081",
+                "connection.url": "jdbc:mysql://localhost:3306/demo?user=russ&password=Password123&serverTimezone=America/Chicago",
+                "auto.create": "true",
+                "topics": "topic01"
+        }
+}
