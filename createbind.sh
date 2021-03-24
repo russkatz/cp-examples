@@ -5,6 +5,7 @@ confluent login --url http://node1:8090
 confluent iam rolebinding create --role SystemAdmin --principal User:kafka --kafka-cluster-id ${CLUSTERID} 
 confluent iam rolebinding create --role SystemAdmin --principal User:kafka --kafka-cluster-id ${CLUSTERID} --schema-registry-cluster-id schema-registry
 confluent iam rolebinding create --role SystemAdmin --principal User:kafka --kafka-cluster-id ${CLUSTERID} --connect-cluster-id connect-cluster01
+confluent iam rolebinding create --role SystemAdmin --principal User:kafka --kafka-cluster-id ${CLUSTERID} --ksql-cluster-id ksql-cluster
 confluent iam rolebinding create --role SystemAdmin --principal User:sr --kafka-cluster-id ${CLUSTERID} --schema-registry-cluster-id schema-registry
 confluent iam rolebinding create --role SystemAdmin --principal User:sr --kafka-cluster-id ${CLUSTERID} 
 confluent iam rolebinding create --role SystemAdmin --principal User:node1 --kafka-cluster-id ${CLUSTERID} 
