@@ -1,0 +1,7 @@
+# vim ro_access.ldif
+
+dn: olcDatabase={1}mdb,cn=config
+changetype: modify
+add: olcAccess
+olcAccess: {3}to dn.base="dc=example,dc=com" by dn.exact="dc=example,dc=com" read
+

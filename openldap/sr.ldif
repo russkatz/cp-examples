@@ -1,0 +1,9 @@
+dn: cn=sr,ou=users,dc=domain,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: sr
+uid: sr
+sn: Kafka User
+userPassword: {SSHA}RvNp9674RxHdxp4JKKF2+c5ae/c0kYXu
